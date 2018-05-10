@@ -1,31 +1,23 @@
-var Scl;
-var snake;
-var food;
+var game;
+
 function setup() {
   createCanvas(600,600);
-  frameRate(12);
-  Scl = 16;
-  snake = new Snake();
-  food = new Food();
-  food.Move();
-  
+  game = new Game(16);
+  game.Start();
 }
 
 function draw() {
   background(0);
-  snake.Show();
-  snake.Update();
-  food.Show();
+  game.Run();
 }
-
 function keyPressed(){
   if(keyCode == UP_ARROW){
-    snake.Direct(0, -1);
+    game.SnakeMove(0, -1);
   }else if(keyCode == DOWN_ARROW){
-    snake.Direct(0, 1);
+    game.SnakeMove(0, 1);
   }else if(keyCode == LEFT_ARROW){
-    snake.Direct(-1, 0);
+    game.SnakeMove(-1, 0);
   }else if(keyCode == RIGHT_ARROW){
-    snake.Direct(1, 0);
+    game.SnakeMove(1, 0);
   }
 }

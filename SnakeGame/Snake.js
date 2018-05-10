@@ -1,25 +1,25 @@
-function Snake(){
-  this.x = 0;
-  this.y = 0;
+function Snake(Scl){
+  this.position = new Position(0,0);
   this.x_Speed = 1;
   this.y_Speed = 0;
+  this.Size = 1;
   
   this.Show = function(){
     fill(255);
-    rect(this.x, this.y, Scl, Scl);
+    rect(this.position.x, this.position.y, Scl, Scl);
   }
   
-  this.Update = function(){
-    this.x = this.x + this.x_Speed * Scl; 
-    this.y = this.y + this.y_Speed * Scl;  
+  this.Update = function(food){
+    this.position.x = this.position.x + this.x_Speed * Scl; 
+    this.position.y = this.position.y + this.y_Speed * Scl;  
     
-    this.x = constrain(this.x, 0, width-Scl);
-    this.y = constrain(this.y, 0, height-Scl);
-  }
-  
-  this.Direct = function(x, y){
-    this.x_Speed = x;
-    this.y_Speed = y;
+    this.position.x = constrain(this.position.x, 0, width-Scl);
+    this.position.y = constrain(this.position.y, 0, height-Scl);
+    
+    if(this.position.x == food.x && this.position.y == food.y){
+      food.Move();
+      this.Size++;
+    }
   }
   
 }

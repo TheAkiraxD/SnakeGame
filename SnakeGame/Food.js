@@ -1,4 +1,4 @@
-function Food(){
+function Food(Scl){
   this.x;
   this.y;
   
@@ -10,7 +10,12 @@ function Food(){
   }
   
   this.Show = function(){
-    fill(255,0,100);
+    if(frameCount % 10 == 0){
+      fill(0,0,0);
+    }else{
+      fill(255,0,190);
+    }
+    
     rect(this.x, this.y,Scl, Scl);
   
   }
