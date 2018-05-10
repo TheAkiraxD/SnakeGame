@@ -1,37 +1,37 @@
 function Tail(snake, Scl){
-  var TArray = [];
+  this.array = [];
   
   this.Start = function(){
-    TArray[snake.Size-1] = createVector(snake.position.x, snake.position.y);
+    this.array[snake.Size-1] = createVector(snake.position.x, snake.position.y);
   }
   
   this.Draw = function(){
     var z;
-    if(TArray.length <= 1){
+    if(this.array.length <= 1){
       z =1;
     }else{
       z = 0;
     }
-    for(var x = z; x < TArray.length; x++){
+    for(var x = z; x < this.array.length; x++){
       fill(255);
-      rect(TArray[x].x, TArray[x].y, Scl, Scl);
+      rect(this.array[x].x, this.array[x].y, Scl, Scl);
     }
   }
   
   this.Move = function(){
-    if(snake.Size === TArray.length){
-      for(var i = 0; i < TArray.length-1; i++){
-        TArray[i] = TArray[i+1];
+    if(snake.Size === this.array.length){
+      for(var i = 0; i < this.array.length-1; i++){
+        this.array[i] = this.array[i+1];
       }
     }
-    TArray[snake.Size-1] = createVector(snake.position.x, snake.position.y);
+    this.array[snake.Size-1] = createVector(snake.position.x, snake.position.y);
   }
   
  this.temporary = function(){
-    if(TArray.length == 3){
+    if(this.array.length == 3){
       var texto = "[ ";
-      for(var w = 0; w < TArray.length; w++){
-        texto+= TArray[w].x + "," + TArray[w].y +" ][ ";
+      for(var w = 0; w < this.array.length; w++){
+        texto+= this.array[w].x + "," + this.array[w].y +" ][ ";
       }
       texto+= " ] - [ " + snake.position.x + "," + snake.position.y + " ]"
       console.log(texto);

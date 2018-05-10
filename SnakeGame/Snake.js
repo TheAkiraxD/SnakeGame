@@ -13,8 +13,8 @@ function Snake(Scl){
     this.position.x = this.position.x + this.x_Speed * Scl; 
     this.position.y = this.position.y + this.y_Speed * Scl;  
     
-    this.position.x = constrain(this.position.x, 0, width-Scl);
-    this.position.y = constrain(this.position.y, 0, height-Scl);
+    //this.position.x = constrain(this.position.x, 0, width-Scl);
+    //this.position.y = constrain(this.position.y, 0, height-Scl);
     
     if(this.position.x == food.x && this.position.y == food.y){
       food.Move();
